@@ -18,5 +18,7 @@ Other features:
 
 -  A calibration value must be stored at 0x7f
 
+  A lot depends on calibration. I use https://github.com/felias-fogg/avrCalibrate for calibration. They set a calibration value of 1200000 not 1000000
+
 
   
