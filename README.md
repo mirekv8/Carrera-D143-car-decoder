@@ -23,7 +23,7 @@ Other features:
 
 # Wiring
 <p align="center">
-  <img src="./blob/main/pics/Schema.png" width="350" title="hover text">
+  <img src="./tree/main/pics/Schema.png" width="350" title="hover text">
 </p>
 
 
