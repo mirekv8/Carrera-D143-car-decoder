@@ -1,4 +1,4 @@
-# Carrera-D143-car-decoder
+# Carrera D143 Car Decoder
 Customized firmware for the Carrera Digital 143 decoder. The base is firmware from https://github.com/azya52/carrera. All functions work with CU 30352. 
 Other features: 
 -  Setting from CU 30352 Ghost car funciton
