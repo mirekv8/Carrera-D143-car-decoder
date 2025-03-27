@@ -26,4 +26,8 @@ Other features:
   <img src="./pics/Schema.png" width="680" title="hover text">
 </p>
 
+# Speed
+<p align="center">
+  <img src="./pics/SdpGph.png" width="680" title="hover text">
+</p>
 
