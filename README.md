@@ -1,7 +1,7 @@
 # Carrera D143 Car Decoder
 Customized firmware for the Carrera Digital 143 decoder. The base is firmware from https://github.com/azya52/carrera. All functions work with CU 30352. 
 Other features: 
--  Setting from CU 30352 Ghost car funciton
+-  Setting from CU 30352 Ghost car function
 -  Front light support.
 -  Break light support
 -  Five custom speed curves are stored in EEPROM
@@ -18,7 +18,9 @@ Other features:
 
 -  A calibration value must be stored at 0x7f
 
-  A lot depends on calibration. I use https://github.com/felias-fogg/avrCalibrate for calibration. They set a calibration value of 1200000 not 1000000.
+
+# Calibration
+A lot depends on calibration. I use https://github.com/felias-fogg/avrCalibrate for calibration. They set a calibration value of 1200000 not 1000000.
 
 
 # Wiring
