@@ -21,4 +21,6 @@ Other features:
   A lot depends on calibration. I use https://github.com/felias-fogg/avrCalibrate for calibration. They set a calibration value of 1200000 not 1000000.
 
 
-  
+# Wiring
+https://github.com/mirekv8/Carrera-D143-car-decoder/blob/pics/schema.png?raw=true
+
