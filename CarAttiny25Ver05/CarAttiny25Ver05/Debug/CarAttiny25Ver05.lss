@@ -1,0 +1,1324 @@
+
+CarAttiny25Ver05.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007e2  00000000  00000000  000000b4  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  000007e2  00000896  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000024  00800064  00800064  0000089a  2**0
+                  ALLOC
+  3 .eeprom       00000005  00810000  00810000  0000089a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .comment      00000030  00000000  00000000  0000089f  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008d0  2**2
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000158  00000000  00000000  00000910  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00001392  00000000  00000000  00000a68  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000674  00000000  00000000  00001dfa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000c1b  00000000  00000000  0000246e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000228  00000000  00000000  0000308c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000006f1  00000000  00000000  000032b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000008ad  00000000  00000000  000039a5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 000000c8  00000000  00000000  00004252  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1e c0       	rjmp	.+60     	; 0x3e <__ctors_end>
+   2:	36 c0       	rjmp	.+108    	; 0x70 <__bad_interrupt>
+   4:	09 c3       	rjmp	.+1554   	; 0x618 <__vector_2>
+   6:	34 c0       	rjmp	.+104    	; 0x70 <__bad_interrupt>
+   8:	33 c0       	rjmp	.+102    	; 0x70 <__bad_interrupt>
+   a:	32 c0       	rjmp	.+100    	; 0x70 <__bad_interrupt>
+   c:	31 c0       	rjmp	.+98     	; 0x70 <__bad_interrupt>
+   e:	30 c0       	rjmp	.+96     	; 0x70 <__bad_interrupt>
+  10:	2f c0       	rjmp	.+94     	; 0x70 <__bad_interrupt>
+  12:	2e c0       	rjmp	.+92     	; 0x70 <__bad_interrupt>
+  14:	2d c0       	rjmp	.+90     	; 0x70 <__bad_interrupt>
+  16:	2c c0       	rjmp	.+88     	; 0x70 <__bad_interrupt>
+  18:	2b c0       	rjmp	.+86     	; 0x70 <__bad_interrupt>
+  1a:	2a c0       	rjmp	.+84     	; 0x70 <__bad_interrupt>
+  1c:	29 c0       	rjmp	.+82     	; 0x70 <__bad_interrupt>
+
+0000001e <__trampolines_end>:
+  1e:	00 00       	nop
+  20:	00 01       	movw	r0, r0
+  22:	01 01       	movw	r0, r2
+  24:	02 02       	muls	r16, r18
+  26:	02 03       	mulsu	r16, r18
+  28:	03 03       	mulsu	r16, r19
+  2a:	04 04       	cpc	r0, r4
+  2c:	04 04       	cpc	r0, r4
+
+0000002e <swapByte>:
+  2e:	00 08 04 0c 02 0a 06 0e 01 09 05 0d 03 0b 07 0f     ................
+
+0000003e <__ctors_end>:
+  3e:	11 24       	eor	r1, r1
+  40:	1f be       	out	0x3f, r1	; 63
+  42:	cf ed       	ldi	r28, 0xDF	; 223
+  44:	cd bf       	out	0x3d, r28	; 61
+
+00000046 <__do_copy_data>:
+  46:	10 e0       	ldi	r17, 0x00	; 0
+  48:	a0 e6       	ldi	r26, 0x60	; 96
+  4a:	b0 e0       	ldi	r27, 0x00	; 0
+  4c:	e2 ee       	ldi	r30, 0xE2	; 226
+  4e:	f7 e0       	ldi	r31, 0x07	; 7
+  50:	02 c0       	rjmp	.+4      	; 0x56 <__do_copy_data+0x10>
+  52:	05 90       	lpm	r0, Z+
+  54:	0d 92       	st	X+, r0
+  56:	a4 36       	cpi	r26, 0x64	; 100
+  58:	b1 07       	cpc	r27, r17
+  5a:	d9 f7       	brne	.-10     	; 0x52 <__do_copy_data+0xc>
+
+0000005c <__do_clear_bss>:
+  5c:	20 e0       	ldi	r18, 0x00	; 0
+  5e:	a4 e6       	ldi	r26, 0x64	; 100
+  60:	b0 e0       	ldi	r27, 0x00	; 0
+  62:	01 c0       	rjmp	.+2      	; 0x66 <.do_clear_bss_start>
+
+00000064 <.do_clear_bss_loop>:
+  64:	1d 92       	st	X+, r1
+
+00000066 <.do_clear_bss_start>:
+  66:	a8 38       	cpi	r26, 0x88	; 136
+  68:	b2 07       	cpc	r27, r18
+  6a:	e1 f7       	brne	.-8      	; 0x64 <.do_clear_bss_loop>
+  6c:	28 d3       	rcall	.+1616   	; 0x6be <main>
+  6e:	b7 c3       	rjmp	.+1902   	; 0x7de <_exit>
+
+00000070 <__bad_interrupt>:
+  70:	c7 cf       	rjmp	.-114    	; 0x0 <__vectors>
+
+00000072 <playTone>:
+	PORTB &= ~((1 << FRONTLIGHT_PIN) | (1 << STOPLIGHT_PIN));
+	PORTB |= (lightOn & ((1 << FRONTLIGHT_PIN) | (1 << STOPLIGHT_PIN)));
+}
+
+void blinkLights() {
+	PORTB ^= (1 << FRONTLIGHT_PIN);	
+  72:	f8 94       	cli
+  74:	83 e0       	ldi	r24, 0x03	; 3
+  76:	83 bf       	out	0x33, r24	; 51
+  78:	80 ef       	ldi	r24, 0xF0	; 240
+  7a:	88 bd       	out	0x28, r24	; 40
+  7c:	2f e7       	ldi	r18, 0x7F	; 127
+  7e:	89 ea       	ldi	r24, 0xA9	; 169
+  80:	93 e0       	ldi	r25, 0x03	; 3
+  82:	21 50       	subi	r18, 0x01	; 1
+  84:	80 40       	sbci	r24, 0x00	; 0
+  86:	90 40       	sbci	r25, 0x00	; 0
+  88:	e1 f7       	brne	.-8      	; 0x82 <__DATA_REGION_LENGTH__+0x2>
+  8a:	00 c0       	rjmp	.+0      	; 0x8c <__DATA_REGION_LENGTH__+0xc>
+  8c:	00 00       	nop
+  8e:	8f ef       	ldi	r24, 0xFF	; 255
+  90:	88 bd       	out	0x28, r24	; 40
+  92:	81 e0       	ldi	r24, 0x01	; 1
+  94:	83 bf       	out	0x33, r24	; 51
+  96:	78 94       	sei
+  98:	08 95       	ret
+
+0000009a <timersInit>:
+  9a:	83 e3       	ldi	r24, 0x33	; 51
+  9c:	8a bd       	out	0x2a, r24	; 42
+  9e:	81 e0       	ldi	r24, 0x01	; 1
+  a0:	83 bf       	out	0x33, r24	; 51
+  a2:	8f ef       	ldi	r24, 0xFF	; 255
+  a4:	88 bd       	out	0x28, r24	; 40
+  a6:	80 b7       	in	r24, 0x30	; 48
+  a8:	85 6d       	ori	r24, 0xD5	; 213
+  aa:	80 bf       	out	0x30, r24	; 48
+  ac:	08 95       	ret
+
+000000ae <startLEDPWM>:
+  ae:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <carID>
+  b2:	90 e0       	ldi	r25, 0x00	; 0
+  b4:	01 96       	adiw	r24, 0x01	; 1
+  b6:	82 95       	swap	r24
+  b8:	88 0f       	add	r24, r24
+  ba:	80 7e       	andi	r24, 0xE0	; 224
+  bc:	8d bd       	out	0x2d, r24	; 45
+  be:	8d b5       	in	r24, 0x2d	; 45
+  c0:	80 51       	subi	r24, 0x10	; 16
+  c2:	8e bd       	out	0x2e, r24	; 46
+  c4:	08 95       	ret
+
+000000c6 <pinsInit>:
+  c6:	8f e0       	ldi	r24, 0x0F	; 15
+  c8:	87 bb       	out	0x17, r24	; 23
+  ca:	80 e1       	ldi	r24, 0x10	; 16
+  cc:	88 bb       	out	0x18, r24	; 24
+  ce:	88 b3       	in	r24, 0x18	; 24
+  d0:	80 62       	ori	r24, 0x20	; 32
+  d2:	88 bb       	out	0x18, r24	; 24
+  d4:	08 95       	ret
+
+000000d6 <interruptsInit>:
+  d6:	80 e2       	ldi	r24, 0x20	; 32
+  d8:	8b bf       	out	0x3b, r24	; 59
+  da:	82 e0       	ldi	r24, 0x02	; 2
+  dc:	85 bf       	out	0x35, r24	; 53
+  de:	80 e1       	ldi	r24, 0x10	; 16
+  e0:	85 bb       	out	0x15, r24	; 21
+  e2:	78 94       	sei
+  e4:	08 95       	ret
+
+000000e6 <setEepromSpeed>:
+  e6:	82 30       	cpi	r24, 0x02	; 2
+  e8:	d9 f0       	breq	.+54     	; 0x120 <setEepromSpeed+0x3a>
+  ea:	28 f4       	brcc	.+10     	; 0xf6 <setEepromSpeed+0x10>
+  ec:	88 23       	and	r24, r24
+  ee:	41 f0       	breq	.+16     	; 0x100 <setEepromSpeed+0x1a>
+  f0:	81 30       	cpi	r24, 0x01	; 1
+  f2:	71 f0       	breq	.+28     	; 0x110 <setEepromSpeed+0x2a>
+  f4:	08 95       	ret
+  f6:	83 30       	cpi	r24, 0x03	; 3
+  f8:	d9 f0       	breq	.+54     	; 0x130 <setEepromSpeed+0x4a>
+  fa:	84 30       	cpi	r24, 0x04	; 4
+  fc:	09 f1       	breq	.+66     	; 0x140 <setEepromSpeed+0x5a>
+  fe:	08 95       	ret
+ 100:	40 e1       	ldi	r20, 0x10	; 16
+ 102:	50 e0       	ldi	r21, 0x00	; 0
+ 104:	60 e1       	ldi	r22, 0x10	; 16
+ 106:	70 e0       	ldi	r23, 0x00	; 0
+ 108:	88 e7       	ldi	r24, 0x78	; 120
+ 10a:	90 e0       	ldi	r25, 0x00	; 0
+ 10c:	31 d3       	rcall	.+1634   	; 0x770 <eeprom_read_block>
+ 10e:	08 95       	ret
+ 110:	40 e1       	ldi	r20, 0x10	; 16
+ 112:	50 e0       	ldi	r21, 0x00	; 0
+ 114:	60 e2       	ldi	r22, 0x20	; 32
+ 116:	70 e0       	ldi	r23, 0x00	; 0
+ 118:	88 e7       	ldi	r24, 0x78	; 120
+ 11a:	90 e0       	ldi	r25, 0x00	; 0
+ 11c:	29 d3       	rcall	.+1618   	; 0x770 <eeprom_read_block>
+ 11e:	08 95       	ret
+ 120:	40 e1       	ldi	r20, 0x10	; 16
+ 122:	50 e0       	ldi	r21, 0x00	; 0
+ 124:	60 e3       	ldi	r22, 0x30	; 48
+ 126:	70 e0       	ldi	r23, 0x00	; 0
+ 128:	88 e7       	ldi	r24, 0x78	; 120
+ 12a:	90 e0       	ldi	r25, 0x00	; 0
+ 12c:	21 d3       	rcall	.+1602   	; 0x770 <eeprom_read_block>
+ 12e:	08 95       	ret
+ 130:	40 e1       	ldi	r20, 0x10	; 16
+ 132:	50 e0       	ldi	r21, 0x00	; 0
+ 134:	60 e4       	ldi	r22, 0x40	; 64
+ 136:	70 e0       	ldi	r23, 0x00	; 0
+ 138:	88 e7       	ldi	r24, 0x78	; 120
+ 13a:	90 e0       	ldi	r25, 0x00	; 0
+ 13c:	19 d3       	rcall	.+1586   	; 0x770 <eeprom_read_block>
+ 13e:	08 95       	ret
+ 140:	40 e1       	ldi	r20, 0x10	; 16
+ 142:	50 e0       	ldi	r21, 0x00	; 0
+ 144:	60 e5       	ldi	r22, 0x50	; 80
+ 146:	70 e0       	ldi	r23, 0x00	; 0
+ 148:	88 e7       	ldi	r24, 0x78	; 120
+ 14a:	90 e0       	ldi	r25, 0x00	; 0
+ 14c:	11 d3       	rcall	.+1570   	; 0x770 <eeprom_read_block>
+ 14e:	08 95       	ret
+
+00000150 <setCarSpeed>:
+ 150:	81 11       	cpse	r24, r1
+ 152:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <codeGhostMode>
+ 156:	80 93 77 00 	sts	0x0077, r24	; 0x800077 <currentSpeed>
+ 15a:	e8 2f       	mov	r30, r24
+ 15c:	f0 e0       	ldi	r31, 0x00	; 0
+ 15e:	e8 58       	subi	r30, 0x88	; 136
+ 160:	ff 4f       	sbci	r31, 0xFF	; 255
+ 162:	20 81       	ld	r18, Z
+ 164:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <fuel>
+ 168:	62 2f       	mov	r22, r18
+ 16a:	70 e0       	ldi	r23, 0x00	; 0
+ 16c:	90 e0       	ldi	r25, 0x00	; 0
+ 16e:	ef d2       	rcall	.+1502   	; 0x74e <__mulhi3>
+ 170:	88 0f       	add	r24, r24
+ 172:	89 2f       	mov	r24, r25
+ 174:	88 1f       	adc	r24, r24
+ 176:	99 0b       	sbc	r25, r25
+ 178:	82 1b       	sub	r24, r18
+ 17a:	81 50       	subi	r24, 0x01	; 1
+ 17c:	88 bd       	out	0x28, r24	; 40
+ 17e:	08 95       	ret
+
+00000180 <setCarID>:
+ 180:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <carID>
+ 184:	68 2f       	mov	r22, r24
+ 186:	84 e0       	ldi	r24, 0x04	; 4
+ 188:	90 e0       	ldi	r25, 0x00	; 0
+ 18a:	1b d3       	rcall	.+1590   	; 0x7c2 <eeprom_write_byte>
+ 18c:	90 df       	rcall	.-224    	; 0xae <startLEDPWM>
+ 18e:	08 95       	ret
+
+00000190 <calcStopTime>:
+ 190:	81 11       	cpse	r24, r1
+ 192:	0a c0       	rjmp	.+20     	; 0x1a8 <calcStopTime+0x18>
+ 194:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <stopTime>
+ 198:	8f 3f       	cpi	r24, 0xFF	; 255
+ 19a:	41 f0       	breq	.+16     	; 0x1ac <calcStopTime+0x1c>
+ 19c:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <stopTime>
+ 1a0:	8f 5f       	subi	r24, 0xFF	; 255
+ 1a2:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <stopTime>
+ 1a6:	08 95       	ret
+ 1a8:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <stopTime>
+ 1ac:	08 95       	ret
+
+000001ae <setLights>:
+ 1ae:	88 b3       	in	r24, 0x18	; 24
+ 1b0:	83 7f       	andi	r24, 0xF3	; 243
+ 1b2:	88 bb       	out	0x18, r24	; 24
+ 1b4:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <lightOn>
+ 1b8:	98 b3       	in	r25, 0x18	; 24
+ 1ba:	8c 70       	andi	r24, 0x0C	; 12
+ 1bc:	89 2b       	or	r24, r25
+ 1be:	88 bb       	out	0x18, r24	; 24
+ 1c0:	08 95       	ret
+
+000001c2 <switchFrontLight>:
+}
+
+void switchFrontLight() {
+	stopTime = STOPBEFORELIGHT_DELAY - DBLCLICK_DELAY;
+ 1c2:	85 e2       	ldi	r24, 0x25	; 37
+ 1c4:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <stopTime>
+	lightOn = ~lightOn;
+ 1c8:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <lightOn>
+ 1cc:	80 95       	com	r24
+ 1ce:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <lightOn>
+	eeprom_write_byte(&eeprom_lightOn, lightOn);
+ 1d2:	60 91 6f 00 	lds	r22, 0x006F	; 0x80006f <lightOn>
+ 1d6:	80 e0       	ldi	r24, 0x00	; 0
+ 1d8:	90 e0       	ldi	r25, 0x00	; 0
+ 1da:	f3 d2       	rcall	.+1510   	; 0x7c2 <eeprom_write_byte>
+	setLights();
+ 1dc:	e8 df       	rcall	.-48     	; 0x1ae <setLights>
+ 1de:	08 95       	ret
+
+000001e0 <calcStopLightTime>:
+}
+
+void calcStopLightTime(uint8_t speed) {
+	if (lastSpeed - speed > 2) {
+ 1e0:	20 91 6c 00 	lds	r18, 0x006C	; 0x80006c <lastSpeed>
+ 1e4:	30 e0       	ldi	r19, 0x00	; 0
+ 1e6:	28 1b       	sub	r18, r24
+ 1e8:	31 09       	sbc	r19, r1
+ 1ea:	23 30       	cpi	r18, 0x03	; 3
+ 1ec:	31 05       	cpc	r19, r1
+ 1ee:	2c f0       	brlt	.+10     	; 0x1fa <calcStopLightTime+0x1a>
+		stopLightTime = STOPLIGHT_DELAY;
+ 1f0:	86 e0       	ldi	r24, 0x06	; 6
+ 1f2:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <stopLightTime>
+		setLights();
+ 1f6:	db df       	rcall	.-74     	; 0x1ae <setLights>
+ 1f8:	08 95       	ret
+	} else {
+		if (stopLightTime > 0) {
+ 1fa:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <stopLightTime>
+ 1fe:	88 23       	and	r24, r24
+ 200:	29 f0       	breq	.+10     	; 0x20c <calcStopLightTime+0x2c>
+			stopLightTime--;
+ 202:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <stopLightTime>
+ 206:	81 50       	subi	r24, 0x01	; 1
+ 208:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <stopLightTime>
+ 20c:	08 95       	ret
+
+0000020e <stopLightMiddleOn>:
+		}
+	}
+}
+
+void stopLightMiddleOn() {
+	if (lightOn && (stopLightTime == 0)) {
+ 20e:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <lightOn>
+ 212:	88 23       	and	r24, r24
+ 214:	41 f0       	breq	.+16     	; 0x226 <stopLightMiddleOn+0x18>
+ 216:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <stopLightTime>
+ 21a:	81 11       	cpse	r24, r1
+ 21c:	04 c0       	rjmp	.+8      	; 0x226 <stopLightMiddleOn+0x18>
+		PORTB ^= (1 << STOPLIGHT_PIN);
+ 21e:	98 b3       	in	r25, 0x18	; 24
+ 220:	84 e0       	ldi	r24, 0x04	; 4
+ 222:	89 27       	eor	r24, r25
+ 224:	88 bb       	out	0x18, r24	; 24
+ 226:	08 95       	ret
+
+00000228 <stopProg>:
+	}
+}
+
+void stopProg() {
+	if (progSpeedMode) {
+ 228:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <progSpeedMode>
+ 22c:	88 23       	and	r24, r24
+ 22e:	71 f0       	breq	.+28     	; 0x24c <stopProg+0x24>
+		speedMultiplier = progSpeedSelecter;
+ 230:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <progSpeedSelecter>
+ 234:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <speedMultiplier>
+		progSpeedMode = 0;
+ 238:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <progSpeedMode>
+		eeprom_write_byte(&eeprom_speedMultiplier, speedMultiplier);	
+ 23c:	60 91 61 00 	lds	r22, 0x0061	; 0x800061 <speedMultiplier>
+ 240:	81 e0       	ldi	r24, 0x01	; 1
+ 242:	90 e0       	ldi	r25, 0x00	; 0
+ 244:	be d2       	rcall	.+1404   	; 0x7c2 <eeprom_write_byte>
+		setEepromSpeed(speedMultiplier);		
+ 246:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <speedMultiplier>
+ 24a:	4d df       	rcall	.-358    	; 0xe6 <setEepromSpeed>
+	}
+	progMode = 0;
+ 24c:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <progMode>
+ 250:	08 95       	ret
+
+00000252 <onMultiClick>:
+}
+
+void onMultiClick(uint8_t controllerId, uint8_t clickCount) {
+ 252:	cf 93       	push	r28
+ 254:	df 93       	push	r29
+ 256:	d8 2f       	mov	r29, r24
+ 258:	c6 2f       	mov	r28, r22
+	if (progGhostMode) {
+ 25a:	80 91 73 00 	lds	r24, 0x0073	; 0x800073 <progGhostMode>
+ 25e:	88 23       	and	r24, r24
+ 260:	99 f0       	breq	.+38     	; 0x288 <onMultiClick+0x36>
+		ghostSpeed = currentSpeed;
+ 262:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentSpeed>
+ 266:	80 93 71 00 	sts	0x0071, r24	; 0x800071 <ghostSpeed>
+		currentSpeed = 0;
+ 26a:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <currentSpeed>
+		progGhostMode = 0;
+ 26e:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <progGhostMode>
+		progMode = 0;
+ 272:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <progMode>
+		eeprom_write_byte(&eeprom_ghostSpeed, ghostSpeed);
+ 276:	60 91 71 00 	lds	r22, 0x0071	; 0x800071 <ghostSpeed>
+ 27a:	82 e0       	ldi	r24, 0x02	; 2
+ 27c:	90 e0       	ldi	r25, 0x00	; 0
+ 27e:	a1 d2       	rcall	.+1346   	; 0x7c2 <eeprom_write_byte>
+		setCarID(GHOST_CAR_ID);
+ 280:	86 e0       	ldi	r24, 0x06	; 6
+ 282:	7e df       	rcall	.-260    	; 0x180 <setCarID>
+		playTone();
+ 284:	f6 de       	rcall	.-532    	; 0x72 <playTone>
+ 286:	50 c0       	rjmp	.+160    	; 0x328 <onMultiClick+0xd6>
+	} else if (progSpeedMode) {
+ 288:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <progSpeedMode>
+ 28c:	88 23       	and	r24, r24
+ 28e:	b9 f0       	breq	.+46     	; 0x2be <onMultiClick+0x6c>
+		playTone();
+ 290:	f0 de       	rcall	.-544    	; 0x72 <playTone>
+		progSpeedSelecter++;
+ 292:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <progSpeedSelecter>
+ 296:	8f 5f       	subi	r24, 0xFF	; 255
+ 298:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <progSpeedSelecter>
+		if (progSpeedSelecter == 4) {
+ 29c:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <progSpeedSelecter>
+ 2a0:	84 30       	cpi	r24, 0x04	; 4
+ 2a2:	09 f0       	breq	.+2      	; 0x2a6 <onMultiClick+0x54>
+ 2a4:	41 c0       	rjmp	.+130    	; 0x328 <onMultiClick+0xd6>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2a6:	2f e7       	ldi	r18, 0x7F	; 127
+ 2a8:	88 e3       	ldi	r24, 0x38	; 56
+ 2aa:	91 e0       	ldi	r25, 0x01	; 1
+ 2ac:	21 50       	subi	r18, 0x01	; 1
+ 2ae:	80 40       	sbci	r24, 0x00	; 0
+ 2b0:	90 40       	sbci	r25, 0x00	; 0
+ 2b2:	e1 f7       	brne	.-8      	; 0x2ac <onMultiClick+0x5a>
+ 2b4:	00 c0       	rjmp	.+0      	; 0x2b6 <onMultiClick+0x64>
+ 2b6:	00 00       	nop
+			_delay_ms(50);
+			playTone();
+ 2b8:	dc de       	rcall	.-584    	; 0x72 <playTone>
+			stopProg();
+ 2ba:	b6 df       	rcall	.-148    	; 0x228 <stopProg>
+ 2bc:	35 c0       	rjmp	.+106    	; 0x328 <onMultiClick+0xd6>
+		}
+	} else if ((clickCount > 1) && (currentSpeed == 0)) {
+ 2be:	62 30       	cpi	r22, 0x02	; 2
+ 2c0:	98 f1       	brcs	.+102    	; 0x328 <onMultiClick+0xd6>
+ 2c2:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentSpeed>
+ 2c6:	81 11       	cpse	r24, r1
+ 2c8:	2f c0       	rjmp	.+94     	; 0x328 <onMultiClick+0xd6>
+		if (progMode) {
+ 2ca:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <progMode>
+ 2ce:	88 23       	and	r24, r24
+ 2d0:	59 f1       	breq	.+86     	; 0x328 <onMultiClick+0xd6>
+			playTone();			
+ 2d2:	cf de       	rcall	.-610    	; 0x72 <playTone>
+			if (clickCount == 2) {
+ 2d4:	c2 30       	cpi	r28, 0x02	; 2
+ 2d6:	91 f4       	brne	.+36     	; 0x2fc <onMultiClick+0xaa>
+				if (codeGhostMode == 0) {
+ 2d8:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <codeGhostMode>
+ 2dc:	81 11       	cpse	r24, r1
+ 2de:	06 c0       	rjmp	.+12     	; 0x2ec <onMultiClick+0x9a>
+					codeGhostMode = 1;			
+ 2e0:	81 e0       	ldi	r24, 0x01	; 1
+ 2e2:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <codeGhostMode>
+					setCarID(controllerId);
+ 2e6:	8d 2f       	mov	r24, r29
+ 2e8:	4b df       	rcall	.-362    	; 0x180 <setCarID>
+ 2ea:	1e c0       	rjmp	.+60     	; 0x328 <onMultiClick+0xd6>
+				}else {
+					codeGhostMode = 0;
+ 2ec:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <codeGhostMode>
+					carID = controllerId;
+ 2f0:	d0 93 63 00 	sts	0x0063, r29	; 0x800063 <carID>
+					progGhostMode = 1;					
+ 2f4:	81 e0       	ldi	r24, 0x01	; 1
+ 2f6:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <progGhostMode>
+ 2fa:	16 c0       	rjmp	.+44     	; 0x328 <onMultiClick+0xd6>
+				}
+			} else if (clickCount == 3) {
+ 2fc:	c3 30       	cpi	r28, 0x03	; 3
+ 2fe:	41 f4       	brne	.+16     	; 0x310 <onMultiClick+0xbe>
+				progSpeedMode = 1;
+ 300:	81 e0       	ldi	r24, 0x01	; 1
+ 302:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <progSpeedMode>
+				progSpeedSelecter = 0;
+ 306:	10 92 70 00 	sts	0x0070, r1	; 0x800070 <progSpeedSelecter>
+				codeGhostMode = 0;				
+ 30a:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <codeGhostMode>
+ 30e:	0c c0       	rjmp	.+24     	; 0x328 <onMultiClick+0xd6>
+			} else if (clickCount == 4 ) {
+ 310:	c4 30       	cpi	r28, 0x04	; 4
+ 312:	41 f4       	brne	.+16     	; 0x324 <onMultiClick+0xd2>
+				carID = controllerId;
+ 314:	d0 93 63 00 	sts	0x0063, r29	; 0x800063 <carID>
+				progGhostMode = 1;
+ 318:	81 e0       	ldi	r24, 0x01	; 1
+ 31a:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <progGhostMode>
+				codeGhostMode = 0;
+ 31e:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <codeGhostMode>
+ 322:	02 c0       	rjmp	.+4      	; 0x328 <onMultiClick+0xd6>
+			} else {
+				progMode = 0;
+ 324:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <progMode>
+			}
+		}
+	}
+}
+ 328:	df 91       	pop	r29
+ 32a:	cf 91       	pop	r28
+ 32c:	08 95       	ret
+
+0000032e <checkPrgMode>:
+
+
+void checkPrgMode(uint8_t controllerId, uint8_t sw) {
+	if((prgModeReady == 0)  && (progMode == 0)){		
+ 32e:	90 91 6a 00 	lds	r25, 0x006A	; 0x80006a <prgModeReady>
+ 332:	91 11       	cpse	r25, r1
+ 334:	42 c0       	rjmp	.+132    	; 0x3ba <checkPrgMode+0x8c>
+ 336:	90 91 74 00 	lds	r25, 0x0074	; 0x800074 <progMode>
+ 33a:	91 11       	cpse	r25, r1
+ 33c:	3e c0       	rjmp	.+124    	; 0x3ba <checkPrgMode+0x8c>
+		if(sw) { //není stisknuto
+ 33e:	66 23       	and	r22, r22
+ 340:	91 f0       	breq	.+36     	; 0x366 <checkPrgMode+0x38>
+			if(controllerId == prgClickControllerId)
+ 342:	90 91 60 00 	lds	r25, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 346:	98 13       	cpse	r25, r24
+ 348:	38 c0       	rjmp	.+112    	; 0x3ba <checkPrgMode+0x8c>
+			{
+				prevSw=0;
+ 34a:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <prevSw>
+				if (notClickPrg++ > DBLCLICK_DELAY) {
+ 34e:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <notClickPrg>
+ 352:	91 e0       	ldi	r25, 0x01	; 1
+ 354:	98 0f       	add	r25, r24
+ 356:	90 93 68 00 	sts	0x0068, r25	; 0x800068 <notClickPrg>
+ 35a:	84 30       	cpi	r24, 0x04	; 4
+ 35c:	70 f1       	brcs	.+92     	; 0x3ba <checkPrgMode+0x8c>
+					prgClickControllerId = 255;
+ 35e:	8f ef       	ldi	r24, 0xFF	; 255
+ 360:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 364:	08 95       	ret
+				}								
+			}
+		} else { //je stisknuto
+			notClickPrg = 0;
+ 366:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <notClickPrg>
+			if(!prevSw) { //nebylo stisknuto
+ 36a:	90 91 6b 00 	lds	r25, 0x006B	; 0x80006b <prevSw>
+ 36e:	91 11       	cpse	r25, r1
+ 370:	24 c0       	rjmp	.+72     	; 0x3ba <checkPrgMode+0x8c>
+				if (controllerId < prgClickControllerId) { //jde o první stisknutí
+ 372:	90 91 60 00 	lds	r25, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 376:	89 17       	cp	r24, r25
+ 378:	20 f4       	brcc	.+8      	; 0x382 <checkPrgMode+0x54>
+					prgClickControllerId = controllerId;
+ 37a:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+					countClickPrg = 0;
+ 37e:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <countClickPrg>
+				}
+				if ((controllerId == prgClickControllerId) && (currentSpeed == 0))  { // jde o další stisknutí
+ 382:	90 91 60 00 	lds	r25, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 386:	89 13       	cpse	r24, r25
+ 388:	18 c0       	rjmp	.+48     	; 0x3ba <checkPrgMode+0x8c>
+ 38a:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentSpeed>
+ 38e:	81 11       	cpse	r24, r1
+ 390:	14 c0       	rjmp	.+40     	; 0x3ba <checkPrgMode+0x8c>
+					prevSw=1;
+ 392:	81 e0       	ldi	r24, 0x01	; 1
+ 394:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <prevSw>
+					if(++countClickPrg > 1) { // dvojklik - programovací mod
+ 398:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <countClickPrg>
+ 39c:	8f 5f       	subi	r24, 0xFF	; 255
+ 39e:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <countClickPrg>
+ 3a2:	82 30       	cpi	r24, 0x02	; 2
+ 3a4:	50 f0       	brcs	.+20     	; 0x3ba <checkPrgMode+0x8c>
+						eeprom_write_byte(&eeprom_progInNextPowerOn, 1);
+ 3a6:	61 e0       	ldi	r22, 0x01	; 1
+ 3a8:	83 e0       	ldi	r24, 0x03	; 3
+ 3aa:	90 e0       	ldi	r25, 0x00	; 0
+ 3ac:	0a d2       	rcall	.+1044   	; 0x7c2 <eeprom_write_byte>
+						playTone();						
+ 3ae:	61 de       	rcall	.-830    	; 0x72 <playTone>
+						prgModeReady = 1;
+ 3b0:	81 e0       	ldi	r24, 0x01	; 1
+ 3b2:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <prgModeReady>
+						prevSw=0;
+ 3b6:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <prevSw>
+ 3ba:	08 95       	ret
+
+000003bc <checkDblClick>:
+		}
+	}
+}
+
+void checkDblClick(uint8_t controllerId, uint8_t sw) {
+	if (sw) { //not pressed
+ 3bc:	66 23       	and	r22, r22
+ 3be:	01 f1       	breq	.+64     	; 0x400 <__LOCK_REGION_LENGTH__>
+		if (controllerId == doubleClickControllerId) {
+ 3c0:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <doubleClickControllerId>
+ 3c4:	98 13       	cpse	r25, r24
+ 3c6:	2a c0       	rjmp	.+84     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+			if (notClickSWTime == 0) {
+ 3c8:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <notClickSWTime>
+ 3cc:	91 11       	cpse	r25, r1
+ 3ce:	05 c0       	rjmp	.+10     	; 0x3da <checkDblClick+0x1e>
+				countClickSW++;
+ 3d0:	90 91 76 00 	lds	r25, 0x0076	; 0x800076 <countClickSW>
+ 3d4:	9f 5f       	subi	r25, 0xFF	; 255
+ 3d6:	90 93 76 00 	sts	0x0076, r25	; 0x800076 <countClickSW>
+			}
+			if (notClickSWTime++ > DBLCLICK_DELAY) {
+ 3da:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <notClickSWTime>
+ 3de:	21 e0       	ldi	r18, 0x01	; 1
+ 3e0:	29 0f       	add	r18, r25
+ 3e2:	20 93 75 00 	sts	0x0075, r18	; 0x800075 <notClickSWTime>
+ 3e6:	94 30       	cpi	r25, 0x04	; 4
+ 3e8:	c8 f0       	brcs	.+50     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+				doubleClickControllerId = 255;
+ 3ea:	9f ef       	ldi	r25, 0xFF	; 255
+ 3ec:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <doubleClickControllerId>
+				if (countClickSW > 0) {
+ 3f0:	90 91 76 00 	lds	r25, 0x0076	; 0x800076 <countClickSW>
+ 3f4:	99 23       	and	r25, r25
+ 3f6:	91 f0       	breq	.+36     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+					onMultiClick(controllerId, countClickSW);
+ 3f8:	60 91 76 00 	lds	r22, 0x0076	; 0x800076 <countClickSW>
+ 3fc:	2a df       	rcall	.-428    	; 0x252 <onMultiClick>
+ 3fe:	08 95       	ret
+				}
+			}
+		}
+	} else {
+		if (controllerId < doubleClickControllerId) {
+ 400:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <doubleClickControllerId>
+ 404:	89 17       	cp	r24, r25
+ 406:	20 f4       	brcc	.+8      	; 0x410 <__LOCK_REGION_LENGTH__+0x10>
+			doubleClickControllerId = controllerId;
+ 408:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <doubleClickControllerId>
+			countClickSW = 0;
+ 40c:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <countClickSW>
+		}
+		if (doubleClickControllerId == controllerId) {
+ 410:	90 91 62 00 	lds	r25, 0x0062	; 0x800062 <doubleClickControllerId>
+ 414:	89 13       	cpse	r24, r25
+ 416:	02 c0       	rjmp	.+4      	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+			notClickSWTime = 0;
+ 418:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <notClickSWTime>
+ 41c:	08 95       	ret
+
+0000041e <onProgramDataWordReceived>:
+		}
+	}
+}
+
+void onProgramDataWordReceived(uint16_t word) {
+ 41e:	0f 93       	push	r16
+ 420:	1f 93       	push	r17
+ 422:	cf 93       	push	r28
+ 424:	df 93       	push	r29
+ 426:	ec 01       	movw	r28, r24
+	uint8_t addr = pgm_read_byte(&(swapByte[(word) & 0x0f])) >> 1;
+ 428:	fc 01       	movw	r30, r24
+ 42a:	ef 70       	andi	r30, 0x0F	; 15
+ 42c:	ff 27       	eor	r31, r31
+ 42e:	e2 5d       	subi	r30, 0xD2	; 210
+ 430:	ff 4f       	sbci	r31, 0xFF	; 255
+ 432:	84 91       	lpm	r24, Z
+ 434:	86 95       	lsr	r24
+	uint8_t command = (word >> 3) & 0x1f;
+ 436:	9e 01       	movw	r18, r28
+ 438:	36 95       	lsr	r19
+ 43a:	27 95       	ror	r18
+ 43c:	36 95       	lsr	r19
+ 43e:	27 95       	ror	r18
+ 440:	36 95       	lsr	r19
+ 442:	27 95       	ror	r18
+ 444:	02 2f       	mov	r16, r18
+ 446:	0f 71       	andi	r16, 0x1F	; 31
+	uint8_t value = pgm_read_byte(&(swapByte[(word >> 8) & 0x0f]));
+ 448:	ed 2f       	mov	r30, r29
+ 44a:	ff 27       	eor	r31, r31
+ 44c:	ef 70       	andi	r30, 0x0F	; 15
+ 44e:	ff 27       	eor	r31, r31
+ 450:	e2 5d       	subi	r30, 0xD2	; 210
+ 452:	ff 4f       	sbci	r31, 0xFF	; 255
+ 454:	14 91       	lpm	r17, Z
+		
+	if(addr == carID)
+ 456:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <carID>
+ 45a:	89 13       	cpse	r24, r25
+ 45c:	1f c0       	rjmp	.+62     	; 0x49c <onProgramDataWordReceived+0x7e>
+	{
+		if(word == oldProgDataWord)
+ 45e:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__data_end>
+ 462:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <__data_end+0x1>
+ 466:	c8 17       	cp	r28, r24
+ 468:	d9 07       	cpc	r29, r25
+ 46a:	91 f4       	brne	.+36     	; 0x490 <onProgramDataWordReceived+0x72>
+		{
+			if (command == 0)
+ 46c:	01 11       	cpse	r16, r1
+ 46e:	10 c0       	rjmp	.+32     	; 0x490 <onProgramDataWordReceived+0x72>
+			{
+				playTone();
+ 470:	00 de       	rcall	.-1024   	; 0x72 <playTone>
+				speedMultiplier = pgm_read_byte(&(speedValue[value]));
+ 472:	e1 2f       	mov	r30, r17
+ 474:	f0 e0       	ldi	r31, 0x00	; 0
+ 476:	e2 5e       	subi	r30, 0xE2	; 226
+ 478:	ff 4f       	sbci	r31, 0xFF	; 255
+ 47a:	e4 91       	lpm	r30, Z
+ 47c:	e0 93 61 00 	sts	0x0061, r30	; 0x800061 <speedMultiplier>
+				eeprom_update_byte(&eeprom_speedMultiplier, speedMultiplier);
+ 480:	60 91 61 00 	lds	r22, 0x0061	; 0x800061 <speedMultiplier>
+ 484:	81 e0       	ldi	r24, 0x01	; 1
+ 486:	90 e0       	ldi	r25, 0x00	; 0
+ 488:	8a d1       	rcall	.+788    	; 0x79e <eeprom_update_byte>
+				setEepromSpeed(speedMultiplier);
+ 48a:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <speedMultiplier>
+ 48e:	2b de       	rcall	.-938    	; 0xe6 <setEepromSpeed>
+			}
+		}
+		if (command == 4)
+ 490:	04 30       	cpi	r16, 0x04	; 4
+ 492:	21 f4       	brne	.+8      	; 0x49c <onProgramDataWordReceived+0x7e>
+		{
+			fuel = value & 0x07;
+ 494:	e1 2f       	mov	r30, r17
+ 496:	e7 70       	andi	r30, 0x07	; 7
+ 498:	e0 93 66 00 	sts	0x0066, r30	; 0x800066 <fuel>
+		}
+	}
+	oldProgDataWord=word;
+ 49c:	d0 93 65 00 	sts	0x0065, r29	; 0x800065 <__data_end+0x1>
+ 4a0:	c0 93 64 00 	sts	0x0064, r28	; 0x800064 <__data_end>
+}
+ 4a4:	df 91       	pop	r29
+ 4a6:	cf 91       	pop	r28
+ 4a8:	1f 91       	pop	r17
+ 4aa:	0f 91       	pop	r16
+ 4ac:	08 95       	ret
+
+000004ae <onActiveControllerWordReceived>:
+
+void onActiveControllerWordReceived(uint16_t word) {
+ 4ae:	1f 93       	push	r17
+ 4b0:	cf 93       	push	r28
+ 4b2:	df 93       	push	r29
+	uint8_t parity = word & 0xFE;
+ 4b4:	38 2f       	mov	r19, r24
+ 4b6:	3e 7f       	andi	r19, 0xFE	; 254
+	parity = parity ^ (parity >> 4);
+ 4b8:	23 2f       	mov	r18, r19
+ 4ba:	22 95       	swap	r18
+ 4bc:	2f 70       	andi	r18, 0x0F	; 15
+ 4be:	23 27       	eor	r18, r19
+	parity ^= parity >> 2;
+ 4c0:	32 2f       	mov	r19, r18
+ 4c2:	36 95       	lsr	r19
+ 4c4:	36 95       	lsr	r19
+ 4c6:	23 27       	eor	r18, r19
+	parity ^= parity >> 1;
+ 4c8:	32 2f       	mov	r19, r18
+ 4ca:	36 95       	lsr	r19
+ 4cc:	23 27       	eor	r18, r19
+	parity &= 0x01;
+	if (parity == (word & 0x01)) {
+ 4ce:	42 2f       	mov	r20, r18
+ 4d0:	41 70       	andi	r20, 0x01	; 1
+ 4d2:	50 e0       	ldi	r21, 0x00	; 0
+ 4d4:	9c 01       	movw	r18, r24
+ 4d6:	21 70       	andi	r18, 0x01	; 1
+ 4d8:	33 27       	eor	r19, r19
+ 4da:	42 17       	cp	r20, r18
+ 4dc:	53 07       	cpc	r21, r19
+ 4de:	49 f1       	breq	.+82     	; 0x532 <onActiveControllerWordReceived+0x84>
+ 4e0:	ec 01       	movw	r28, r24
+		return;
+	}
+	
+	uint8_t anyKeyPressed = word & 0x7F;
+ 4e2:	1c 2f       	mov	r17, r28
+ 4e4:	1f 77       	andi	r17, 0x7F	; 127
+	if (anyKeyPressed) {
+ 4e6:	09 f0       	breq	.+2      	; 0x4ea <onActiveControllerWordReceived+0x3c>
+		stopProg();
+ 4e8:	9f de       	rcall	.-706    	; 0x228 <stopProg>
+	}
+	
+	uint8_t currentKeyPressed = (word << (carID & 0x0F)) & 0x40;
+ 4ea:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <carID>
+ 4ee:	8f 70       	andi	r24, 0x0F	; 15
+ 4f0:	9e 01       	movw	r18, r28
+ 4f2:	02 c0       	rjmp	.+4      	; 0x4f8 <onActiveControllerWordReceived+0x4a>
+ 4f4:	22 0f       	add	r18, r18
+ 4f6:	33 1f       	adc	r19, r19
+ 4f8:	8a 95       	dec	r24
+ 4fa:	e2 f7       	brpl	.-8      	; 0x4f4 <onActiveControllerWordReceived+0x46>
+ 4fc:	c9 01       	movw	r24, r18
+ 4fe:	80 74       	andi	r24, 0x40	; 64
+	if (carID == GHOST_CAR_ID) {
+ 500:	90 91 63 00 	lds	r25, 0x0063	; 0x800063 <carID>
+ 504:	96 30       	cpi	r25, 0x06	; 6
+ 506:	51 f4       	brne	.+20     	; 0x51c <onActiveControllerWordReceived+0x6e>
+		if ((currentSpeed == 0) && anyKeyPressed) {
+ 508:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentSpeed>
+ 50c:	81 11       	cpse	r24, r1
+ 50e:	11 c0       	rjmp	.+34     	; 0x532 <onActiveControllerWordReceived+0x84>
+ 510:	11 23       	and	r17, r17
+ 512:	79 f0       	breq	.+30     	; 0x532 <onActiveControllerWordReceived+0x84>
+			setCarSpeed(ghostSpeed);
+ 514:	80 91 71 00 	lds	r24, 0x0071	; 0x800071 <ghostSpeed>
+ 518:	1b de       	rcall	.-970    	; 0x150 <setCarSpeed>
+ 51a:	0b c0       	rjmp	.+22     	; 0x532 <onActiveControllerWordReceived+0x84>
+		}
+	} else {
+		if (currentKeyPressed) {
+ 51c:	88 23       	and	r24, r24
+ 51e:	39 f0       	breq	.+14     	; 0x52e <onActiveControllerWordReceived+0x80>
+			if (currentSpeed == 0) {
+ 520:	80 91 77 00 	lds	r24, 0x0077	; 0x800077 <currentSpeed>
+ 524:	81 11       	cpse	r24, r1
+ 526:	05 c0       	rjmp	.+10     	; 0x532 <onActiveControllerWordReceived+0x84>
+				setCarSpeed(1);
+ 528:	81 e0       	ldi	r24, 0x01	; 1
+ 52a:	12 de       	rcall	.-988    	; 0x150 <setCarSpeed>
+ 52c:	02 c0       	rjmp	.+4      	; 0x532 <onActiveControllerWordReceived+0x84>
+			}
+		} else {
+			setCarSpeed(0);
+ 52e:	80 e0       	ldi	r24, 0x00	; 0
+ 530:	0f de       	rcall	.-994    	; 0x150 <setCarSpeed>
+		}
+	}
+}
+ 532:	df 91       	pop	r29
+ 534:	cf 91       	pop	r28
+ 536:	1f 91       	pop	r17
+ 538:	08 95       	ret
+
+0000053a <onControllerWordReceived>:
+
+void onControllerWordReceived(uint16_t word) {
+ 53a:	1f 93       	push	r17
+ 53c:	cf 93       	push	r28
+ 53e:	df 93       	push	r29
+	uint8_t controllerId = (word >> 6) & 0x07;
+ 540:	9c 01       	movw	r18, r24
+ 542:	00 24       	eor	r0, r0
+ 544:	22 0f       	add	r18, r18
+ 546:	33 1f       	adc	r19, r19
+ 548:	00 1c       	adc	r0, r0
+ 54a:	22 0f       	add	r18, r18
+ 54c:	33 1f       	adc	r19, r19
+ 54e:	00 1c       	adc	r0, r0
+ 550:	23 2f       	mov	r18, r19
+ 552:	30 2d       	mov	r19, r0
+ 554:	d2 2f       	mov	r29, r18
+ 556:	d7 70       	andi	r29, 0x07	; 7
+	uint8_t speed = (word >> 1) & 0x0F;
+ 558:	9c 01       	movw	r18, r24
+ 55a:	36 95       	lsr	r19
+ 55c:	27 95       	ror	r18
+ 55e:	12 2f       	mov	r17, r18
+ 560:	1f 70       	andi	r17, 0x0F	; 15
+	uint8_t sw = (word >> 5) & 1;
+ 562:	96 95       	lsr	r25
+ 564:	87 95       	ror	r24
+ 566:	92 95       	swap	r25
+ 568:	82 95       	swap	r24
+ 56a:	8f 70       	andi	r24, 0x0F	; 15
+ 56c:	89 27       	eor	r24, r25
+ 56e:	9f 70       	andi	r25, 0x0F	; 15
+ 570:	89 27       	eor	r24, r25
+ 572:	c8 2f       	mov	r28, r24
+ 574:	c1 70       	andi	r28, 0x01	; 1
+	checkPrgMode(controllerId, sw);	
+ 576:	6c 2f       	mov	r22, r28
+ 578:	8d 2f       	mov	r24, r29
+ 57a:	d9 de       	rcall	.-590    	; 0x32e <checkPrgMode>
+	if (controllerId == carID) {
+ 57c:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <carID>
+ 580:	d8 13       	cpse	r29, r24
+ 582:	13 c0       	rjmp	.+38     	; 0x5aa <onControllerWordReceived+0x70>
+		setCarSpeed(speed);
+ 584:	81 2f       	mov	r24, r17
+ 586:	e4 dd       	rcall	.-1080   	; 0x150 <setCarSpeed>
+		calcStopTime(speed);
+ 588:	81 2f       	mov	r24, r17
+ 58a:	02 de       	rcall	.-1020   	; 0x190 <calcStopTime>
+		calcStopLightTime(speed);
+ 58c:	81 2f       	mov	r24, r17
+ 58e:	28 de       	rcall	.-944    	; 0x1e0 <calcStopLightTime>
+		if (!sw && (stopTime > STOPBEFORELIGHT_DELAY) && !progMode) {
+ 590:	c1 11       	cpse	r28, r1
+ 592:	09 c0       	rjmp	.+18     	; 0x5a6 <onControllerWordReceived+0x6c>
+ 594:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <stopTime>
+ 598:	89 32       	cpi	r24, 0x29	; 41
+ 59a:	28 f0       	brcs	.+10     	; 0x5a6 <onControllerWordReceived+0x6c>
+ 59c:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <progMode>
+ 5a0:	81 11       	cpse	r24, r1
+ 5a2:	01 c0       	rjmp	.+2      	; 0x5a6 <onControllerWordReceived+0x6c>
+			switchFrontLight();
+ 5a4:	0e de       	rcall	.-996    	; 0x1c2 <switchFrontLight>
+		}
+		lastSpeed = speed;
+ 5a6:	10 93 6c 00 	sts	0x006C, r17	; 0x80006c <lastSpeed>
+	} 
+	checkDblClick(controllerId, sw);
+ 5aa:	6c 2f       	mov	r22, r28
+ 5ac:	8d 2f       	mov	r24, r29
+ 5ae:	06 df       	rcall	.-500    	; 0x3bc <checkDblClick>
+}
+ 5b0:	df 91       	pop	r29
+ 5b2:	cf 91       	pop	r28
+ 5b4:	1f 91       	pop	r17
+ 5b6:	08 95       	ret
+
+000005b8 <onWordReceived>:
+
+void onWordReceived(uint16_t word) {
+ 5b8:	cf 93       	push	r28
+ 5ba:	df 93       	push	r29
+ 5bc:	ec 01       	movw	r28, r24
+	stopLightMiddleOn();
+ 5be:	27 de       	rcall	.-946    	; 0x20e <stopLightMiddleOn>
+	if ((word >> PROG_WORD_CHECK) == 1) {
+ 5c0:	ce 01       	movw	r24, r28
+ 5c2:	89 2f       	mov	r24, r25
+ 5c4:	99 27       	eor	r25, r25
+ 5c6:	82 95       	swap	r24
+ 5c8:	8f 70       	andi	r24, 0x0F	; 15
+ 5ca:	01 97       	sbiw	r24, 0x01	; 1
+ 5cc:	19 f4       	brne	.+6      	; 0x5d4 <onWordReceived+0x1c>
+		onProgramDataWordReceived(word);
+ 5ce:	ce 01       	movw	r24, r28
+ 5d0:	26 df       	rcall	.-436    	; 0x41e <onProgramDataWordReceived>
+ 5d2:	1f c0       	rjmp	.+62     	; 0x612 <onWordReceived+0x5a>
+	} else
+	if ((word >> CONTROLLER_WORD_CHECK) == 1) {
+ 5d4:	ce 01       	movw	r24, r28
+ 5d6:	89 2f       	mov	r24, r25
+ 5d8:	99 27       	eor	r25, r25
+ 5da:	86 95       	lsr	r24
+ 5dc:	01 97       	sbiw	r24, 0x01	; 1
+ 5de:	79 f4       	brne	.+30     	; 0x5fe <onWordReceived+0x46>
+		if ((word >> 6) != 0x0F) {
+ 5e0:	ce 01       	movw	r24, r28
+ 5e2:	00 24       	eor	r0, r0
+ 5e4:	88 0f       	add	r24, r24
+ 5e6:	99 1f       	adc	r25, r25
+ 5e8:	00 1c       	adc	r0, r0
+ 5ea:	88 0f       	add	r24, r24
+ 5ec:	99 1f       	adc	r25, r25
+ 5ee:	00 1c       	adc	r0, r0
+ 5f0:	89 2f       	mov	r24, r25
+ 5f2:	90 2d       	mov	r25, r0
+ 5f4:	0f 97       	sbiw	r24, 0x0f	; 15
+ 5f6:	69 f0       	breq	.+26     	; 0x612 <onWordReceived+0x5a>
+			onControllerWordReceived(word);
+ 5f8:	ce 01       	movw	r24, r28
+ 5fa:	9f df       	rcall	.-194    	; 0x53a <onControllerWordReceived>
+ 5fc:	0a c0       	rjmp	.+20     	; 0x612 <onWordReceived+0x5a>
+		}
+	} else
+	if ((word >> ACTIV_WORD_CHECK) == 1) {
+ 5fe:	ce 01       	movw	r24, r28
+ 600:	88 0f       	add	r24, r24
+ 602:	89 2f       	mov	r24, r25
+ 604:	88 1f       	adc	r24, r24
+ 606:	99 0b       	sbc	r25, r25
+ 608:	91 95       	neg	r25
+ 60a:	01 97       	sbiw	r24, 0x01	; 1
+ 60c:	11 f4       	brne	.+4      	; 0x612 <onWordReceived+0x5a>
+		onActiveControllerWordReceived(word);
+ 60e:	ce 01       	movw	r24, r28
+ 610:	4e df       	rcall	.-356    	; 0x4ae <onActiveControllerWordReceived>
+	}
+}
+ 612:	df 91       	pop	r29
+ 614:	cf 91       	pop	r28
+ 616:	08 95       	ret
+
+00000618 <__vector_2>:
+
+ISR(PCINT0_vect) {
+ 618:	1f 92       	push	r1
+ 61a:	0f 92       	push	r0
+ 61c:	0f b6       	in	r0, 0x3f	; 63
+ 61e:	0f 92       	push	r0
+ 620:	11 24       	eor	r1, r1
+ 622:	2f 93       	push	r18
+ 624:	3f 93       	push	r19
+ 626:	4f 93       	push	r20
+ 628:	5f 93       	push	r21
+ 62a:	6f 93       	push	r22
+ 62c:	7f 93       	push	r23
+ 62e:	8f 93       	push	r24
+ 630:	9f 93       	push	r25
+ 632:	af 93       	push	r26
+ 634:	bf 93       	push	r27
+ 636:	ef 93       	push	r30
+ 638:	ff 93       	push	r31
+	uint8_t start = TCNT0;
+ 63a:	22 b7       	in	r18, 0x32	; 50
+	while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+ 63c:	82 b7       	in	r24, 0x32	; 50
+ 63e:	82 1b       	sub	r24, r18
+ 640:	8c 3c       	cpi	r24, 0xCC	; 204
+ 642:	e0 f3       	brcs	.-8      	; 0x63c <__vector_2+0x24>
+	start += PERIOD_QURT_CICLES;
+ 644:	24 53       	subi	r18, 0x34	; 52
+	uint8_t firstHalfCycle = 1;
+	uint8_t secondHalfCycle = 0;
+	uint16_t receivedValue = 0;
+ 646:	60 e0       	ldi	r22, 0x00	; 0
+ 648:	70 e0       	ldi	r23, 0x00	; 0
+ISR(PCINT0_vect) {
+	uint8_t start = TCNT0;
+	while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+	start += PERIOD_QURT_CICLES;
+	uint8_t firstHalfCycle = 1;
+	uint8_t secondHalfCycle = 0;
+ 64a:	80 e0       	ldi	r24, 0x00	; 0
+
+ISR(PCINT0_vect) {
+	uint8_t start = TCNT0;
+	while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+	start += PERIOD_QURT_CICLES;
+	uint8_t firstHalfCycle = 1;
+ 64c:	41 e0       	ldi	r20, 0x01	; 1
+	uint8_t secondHalfCycle = 0;
+	uint16_t receivedValue = 0;
+	while (firstHalfCycle != secondHalfCycle) {
+ 64e:	20 c0       	rjmp	.+64     	; 0x690 <__vector_2+0x78>
+		receivedValue = (receivedValue << 1) | firstHalfCycle;
+ 650:	66 0f       	add	r22, r22
+ 652:	77 1f       	adc	r23, r23
+ 654:	64 2b       	or	r22, r20
+
+		while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+ 656:	92 b7       	in	r25, 0x32	; 50
+ 658:	92 1b       	sub	r25, r18
+ 65a:	9c 3c       	cpi	r25, 0xCC	; 204
+ 65c:	e0 f3       	brcs	.-8      	; 0x656 <__vector_2+0x3e>
+		start += PERIOD_QURT_CICLES;
+ 65e:	3c ec       	ldi	r19, 0xCC	; 204
+ 660:	32 0f       	add	r19, r18
+		while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+ 662:	92 b7       	in	r25, 0x32	; 50
+ 664:	93 1b       	sub	r25, r19
+ 666:	9c 3c       	cpi	r25, 0xCC	; 204
+ 668:	e0 f3       	brcs	.-8      	; 0x662 <__vector_2+0x4a>
+		start += PERIOD_QURT_CICLES;
+ 66a:	38 e9       	ldi	r19, 0x98	; 152
+ 66c:	32 0f       	add	r19, r18
+
+		firstHalfCycle = (PINB >> TRACK_PIN) & 1;
+ 66e:	46 b3       	in	r20, 0x16	; 22
+ 670:	42 95       	swap	r20
+ 672:	41 70       	andi	r20, 0x01	; 1
+
+		while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+ 674:	92 b7       	in	r25, 0x32	; 50
+ 676:	93 1b       	sub	r25, r19
+ 678:	9c 3c       	cpi	r25, 0xCC	; 204
+ 67a:	e0 f3       	brcs	.-8      	; 0x674 <__vector_2+0x5c>
+		start += PERIOD_QURT_CICLES;
+ 67c:	34 e6       	ldi	r19, 0x64	; 100
+ 67e:	32 0f       	add	r19, r18
+		while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+ 680:	92 b7       	in	r25, 0x32	; 50
+ 682:	93 1b       	sub	r25, r19
+ 684:	9c 3c       	cpi	r25, 0xCC	; 204
+ 686:	e0 f3       	brcs	.-8      	; 0x680 <__vector_2+0x68>
+		start += PERIOD_QURT_CICLES;
+ 688:	20 5d       	subi	r18, 0xD0	; 208
+		
+		secondHalfCycle = (PINB >> TRACK_PIN) & 1;
+ 68a:	86 b3       	in	r24, 0x16	; 22
+ 68c:	82 95       	swap	r24
+ 68e:	81 70       	andi	r24, 0x01	; 1
+	while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+	start += PERIOD_QURT_CICLES;
+	uint8_t firstHalfCycle = 1;
+	uint8_t secondHalfCycle = 0;
+	uint16_t receivedValue = 0;
+	while (firstHalfCycle != secondHalfCycle) {
+ 690:	48 13       	cpse	r20, r24
+ 692:	de cf       	rjmp	.-68     	; 0x650 <__vector_2+0x38>
+		while ((uint8_t) (TCNT0 - start) < PERIOD_QURT_CICLES);
+		start += PERIOD_QURT_CICLES;
+		
+		secondHalfCycle = (PINB >> TRACK_PIN) & 1;
+	}
+	onWordReceived(receivedValue);
+ 694:	cb 01       	movw	r24, r22
+ 696:	90 df       	rcall	.-224    	; 0x5b8 <onWordReceived>
+	GIFR = 1 << PCIF;
+ 698:	80 e2       	ldi	r24, 0x20	; 32
+ 69a:	8a bf       	out	0x3a, r24	; 58
+}
+ 69c:	ff 91       	pop	r31
+ 69e:	ef 91       	pop	r30
+ 6a0:	bf 91       	pop	r27
+ 6a2:	af 91       	pop	r26
+ 6a4:	9f 91       	pop	r25
+ 6a6:	8f 91       	pop	r24
+ 6a8:	7f 91       	pop	r23
+ 6aa:	6f 91       	pop	r22
+ 6ac:	5f 91       	pop	r21
+ 6ae:	4f 91       	pop	r20
+ 6b0:	3f 91       	pop	r19
+ 6b2:	2f 91       	pop	r18
+ 6b4:	0f 90       	pop	r0
+ 6b6:	0f be       	out	0x3f, r0	; 63
+ 6b8:	0f 90       	pop	r0
+ 6ba:	1f 90       	pop	r1
+ 6bc:	18 95       	reti
+
+000006be <main>:
+
+
+int main(void) {
+	OSCCAL=eeprom_read_byte((const void*)0x7f);
+ 6be:	8f e7       	ldi	r24, 0x7F	; 127
+ 6c0:	90 e0       	ldi	r25, 0x00	; 0
+ 6c2:	65 d0       	rcall	.+202    	; 0x78e <eeprom_read_byte>
+ 6c4:	81 bf       	out	0x31, r24	; 49
+    carID = eeprom_read_byte(&eeprom_carID);
+ 6c6:	84 e0       	ldi	r24, 0x04	; 4
+ 6c8:	90 e0       	ldi	r25, 0x00	; 0
+ 6ca:	61 d0       	rcall	.+194    	; 0x78e <eeprom_read_byte>
+ 6cc:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <carID>
+	ghostSpeed = eeprom_read_byte(&eeprom_ghostSpeed);
+ 6d0:	82 e0       	ldi	r24, 0x02	; 2
+ 6d2:	90 e0       	ldi	r25, 0x00	; 0
+ 6d4:	5c d0       	rcall	.+184    	; 0x78e <eeprom_read_byte>
+ 6d6:	80 93 71 00 	sts	0x0071, r24	; 0x800071 <ghostSpeed>
+	speedMultiplier = eeprom_read_byte(&eeprom_speedMultiplier);
+ 6da:	81 e0       	ldi	r24, 0x01	; 1
+ 6dc:	90 e0       	ldi	r25, 0x00	; 0
+ 6de:	57 d0       	rcall	.+174    	; 0x78e <eeprom_read_byte>
+ 6e0:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <speedMultiplier>
+	if (speedMultiplier > MAX_CAR_SPEED_MULTIPLIER) {
+ 6e4:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <speedMultiplier>
+ 6e8:	85 30       	cpi	r24, 0x05	; 5
+ 6ea:	18 f0       	brcs	.+6      	; 0x6f2 <main+0x34>
+		speedMultiplier = MAX_CAR_SPEED_MULTIPLIER;
+ 6ec:	84 e0       	ldi	r24, 0x04	; 4
+ 6ee:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <speedMultiplier>
+	}
+	setEepromSpeed(speedMultiplier);
+ 6f2:	80 91 61 00 	lds	r24, 0x0061	; 0x800061 <speedMultiplier>
+ 6f6:	f7 dc       	rcall	.-1554   	; 0xe6 <setEepromSpeed>
+	progMode = eeprom_read_byte(&eeprom_progInNextPowerOn);
+ 6f8:	83 e0       	ldi	r24, 0x03	; 3
+ 6fa:	90 e0       	ldi	r25, 0x00	; 0
+ 6fc:	48 d0       	rcall	.+144    	; 0x78e <eeprom_read_byte>
+ 6fe:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <progMode>
+	if (progMode) {
+ 702:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <progMode>
+ 706:	88 23       	and	r24, r24
+ 708:	51 f0       	breq	.+20     	; 0x71e <main+0x60>
+		if (progMode > 1) {
+ 70a:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <progMode>
+ 70e:	82 30       	cpi	r24, 0x02	; 2
+ 710:	10 f0       	brcs	.+4      	; 0x716 <main+0x58>
+			progMode = 0;
+ 712:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <progMode>
+		}
+		eeprom_write_byte(&eeprom_progInNextPowerOn, 0);	
+ 716:	60 e0       	ldi	r22, 0x00	; 0
+ 718:	83 e0       	ldi	r24, 0x03	; 3
+ 71a:	90 e0       	ldi	r25, 0x00	; 0
+ 71c:	52 d0       	rcall	.+164    	; 0x7c2 <eeprom_write_byte>
+	}
+	lightOn = eeprom_read_byte(&eeprom_lightOn);
+ 71e:	80 e0       	ldi	r24, 0x00	; 0
+ 720:	90 e0       	ldi	r25, 0x00	; 0
+ 722:	35 d0       	rcall	.+106    	; 0x78e <eeprom_read_byte>
+ 724:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <lightOn>
+	
+	power_adc_disable();
+ 728:	80 b5       	in	r24, 0x20	; 32
+ 72a:	81 60       	ori	r24, 0x01	; 1
+ 72c:	80 bd       	out	0x20, r24	; 32
+	power_usi_disable();
+ 72e:	80 b5       	in	r24, 0x20	; 32
+ 730:	82 60       	ori	r24, 0x02	; 2
+ 732:	80 bd       	out	0x20, r24	; 32
+	//ADCSRA = 0; //disable the ADC
+
+	pinsInit();
+ 734:	c8 dc       	rcall	.-1648   	; 0xc6 <pinsInit>
+	timersInit();
+ 736:	b1 dc       	rcall	.-1694   	; 0x9a <timersInit>
+	startLEDPWM();
+ 738:	ba dc       	rcall	.-1676   	; 0xae <startLEDPWM>
+	setLights();
+ 73a:	39 dd       	rcall	.-1422   	; 0x1ae <setLights>
+	interruptsInit();
+ 73c:	cc dc       	rcall	.-1640   	; 0xd6 <interruptsInit>
+	
+	set_sleep_mode(SLEEP_MODE_IDLE);
+ 73e:	85 b7       	in	r24, 0x35	; 53
+ 740:	87 7e       	andi	r24, 0xE7	; 231
+ 742:	85 bf       	out	0x35, r24	; 53
+	while (1) {
+		sleep_enable(); 
+ 744:	85 b7       	in	r24, 0x35	; 53
+ 746:	80 62       	ori	r24, 0x20	; 32
+ 748:	85 bf       	out	0x35, r24	; 53
+		sleep_cpu(); 
+ 74a:	88 95       	sleep
+ 74c:	fb cf       	rjmp	.-10     	; 0x744 <main+0x86>
+
+0000074e <__mulhi3>:
+ 74e:	00 24       	eor	r0, r0
+ 750:	55 27       	eor	r21, r21
+ 752:	04 c0       	rjmp	.+8      	; 0x75c <__mulhi3+0xe>
+ 754:	08 0e       	add	r0, r24
+ 756:	59 1f       	adc	r21, r25
+ 758:	88 0f       	add	r24, r24
+ 75a:	99 1f       	adc	r25, r25
+ 75c:	00 97       	sbiw	r24, 0x00	; 0
+ 75e:	29 f0       	breq	.+10     	; 0x76a <__mulhi3+0x1c>
+ 760:	76 95       	lsr	r23
+ 762:	67 95       	ror	r22
+ 764:	b8 f3       	brcs	.-18     	; 0x754 <__mulhi3+0x6>
+ 766:	71 05       	cpc	r23, r1
+ 768:	b9 f7       	brne	.-18     	; 0x758 <__mulhi3+0xa>
+ 76a:	80 2d       	mov	r24, r0
+ 76c:	95 2f       	mov	r25, r21
+ 76e:	08 95       	ret
+
+00000770 <eeprom_read_block>:
+ 770:	a8 2f       	mov	r26, r24
+ 772:	86 2f       	mov	r24, r22
+
+00000774 <eeprom_read_blraw>:
+ 774:	e8 2f       	mov	r30, r24
+ 776:	e1 99       	sbic	0x1c, 1	; 28
+ 778:	fe cf       	rjmp	.-4      	; 0x776 <eeprom_read_blraw+0x2>
+ 77a:	1f ba       	out	0x1f, r1	; 31
+ 77c:	05 c0       	rjmp	.+10     	; 0x788 <eeprom_read_blraw+0x14>
+ 77e:	ee bb       	out	0x1e, r30	; 30
+ 780:	e0 9a       	sbi	0x1c, 0	; 28
+ 782:	e3 95       	inc	r30
+ 784:	0d b2       	in	r0, 0x1d	; 29
+ 786:	0d 92       	st	X+, r0
+ 788:	41 50       	subi	r20, 0x01	; 1
+ 78a:	c8 f7       	brcc	.-14     	; 0x77e <eeprom_read_blraw+0xa>
+ 78c:	08 95       	ret
+
+0000078e <eeprom_read_byte>:
+ 78e:	e1 99       	sbic	0x1c, 1	; 28
+ 790:	fe cf       	rjmp	.-4      	; 0x78e <eeprom_read_byte>
+ 792:	1f ba       	out	0x1f, r1	; 31
+ 794:	8e bb       	out	0x1e, r24	; 30
+ 796:	e0 9a       	sbi	0x1c, 0	; 28
+ 798:	99 27       	eor	r25, r25
+ 79a:	8d b3       	in	r24, 0x1d	; 29
+ 79c:	08 95       	ret
+
+0000079e <eeprom_update_byte>:
+ 79e:	26 2f       	mov	r18, r22
+
+000007a0 <eeprom_update_r18>:
+ 7a0:	e1 99       	sbic	0x1c, 1	; 28
+ 7a2:	fe cf       	rjmp	.-4      	; 0x7a0 <eeprom_update_r18>
+ 7a4:	1f ba       	out	0x1f, r1	; 31
+ 7a6:	8e bb       	out	0x1e, r24	; 30
+ 7a8:	e0 9a       	sbi	0x1c, 0	; 28
+ 7aa:	81 50       	subi	r24, 0x01	; 1
+ 7ac:	0d b2       	in	r0, 0x1d	; 29
+ 7ae:	02 16       	cp	r0, r18
+ 7b0:	39 f0       	breq	.+14     	; 0x7c0 <eeprom_update_r18+0x20>
+ 7b2:	1c ba       	out	0x1c, r1	; 28
+ 7b4:	2d bb       	out	0x1d, r18	; 29
+ 7b6:	0f b6       	in	r0, 0x3f	; 63
+ 7b8:	f8 94       	cli
+ 7ba:	e2 9a       	sbi	0x1c, 2	; 28
+ 7bc:	e1 9a       	sbi	0x1c, 1	; 28
+ 7be:	0f be       	out	0x3f, r0	; 63
+ 7c0:	08 95       	ret
+
+000007c2 <eeprom_write_byte>:
+ 7c2:	26 2f       	mov	r18, r22
+
+000007c4 <eeprom_write_r18>:
+ 7c4:	e1 99       	sbic	0x1c, 1	; 28
+ 7c6:	fe cf       	rjmp	.-4      	; 0x7c4 <eeprom_write_r18>
+ 7c8:	1c ba       	out	0x1c, r1	; 28
+ 7ca:	1f ba       	out	0x1f, r1	; 31
+ 7cc:	8e bb       	out	0x1e, r24	; 30
+ 7ce:	2d bb       	out	0x1d, r18	; 29
+ 7d0:	0f b6       	in	r0, 0x3f	; 63
+ 7d2:	f8 94       	cli
+ 7d4:	e2 9a       	sbi	0x1c, 2	; 28
+ 7d6:	e1 9a       	sbi	0x1c, 1	; 28
+ 7d8:	0f be       	out	0x3f, r0	; 63
+ 7da:	01 96       	adiw	r24, 0x01	; 1
+ 7dc:	08 95       	ret
+
+000007de <_exit>:
+ 7de:	f8 94       	cli
+
+000007e0 <__stop_program>:
+ 7e0:	ff cf       	rjmp	.-2      	; 0x7e0 <__stop_program>
