@@ -4,7 +4,7 @@ Other features:
 -  Setting from CU 30352 Ghost car funciton
 -  Front light support.
 -  Break light support
--  Custom Speed Curves are stored in EEPROM
+-  Five custom speed curves are stored in EEPROM
 
   :100000000004000000FFFFFFFFFFFFFFFFFFFFFFF7<br/>
   :1000100000050A14191E23282D32373C46505A6E0B<br/>
@@ -26,7 +26,7 @@ Other features:
   <img src="./pics/Schema.png" width="680" title="hover text">
 </p>
 
-# Speed
+# Speed curves
 <p align="center">
   <img src="./pics/SdpGph.png" width="680" title="hover text">
 </p>
