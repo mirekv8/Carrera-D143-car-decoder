@@ -22,5 +22,8 @@ Other features:
 
 
 # Wiring
-https://github.com/mirekv8/Carrera-D143-car-decoder/blob/pics/Schema.png?raw=true
+<p align="center">
+  <img src="./blob/main/pics/Schema.png" width="350" title="hover text">
+</p>
+
 
