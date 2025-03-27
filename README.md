@@ -5,3 +5,4 @@ Other features:
 -  Front light support.
 -  Break light support
 -  Custom Speed Curves are stored in EEPROM
+-  A calibration value must be stored at 0x7f
