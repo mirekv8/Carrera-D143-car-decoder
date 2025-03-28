@@ -26,7 +26,7 @@ A lot depends on calibration. I use https://github.com/felias-fogg/avrCalibrate 
 
 # Wiring
 <p align="center">
-  <img src="./pics/Schema.png" width="680" title="hover text">
+  <img src="./pics/Schema.png" width="680" title="ATTINY25">
 </p>
 
 # Speed curves
